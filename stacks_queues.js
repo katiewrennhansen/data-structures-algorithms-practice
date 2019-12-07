@@ -30,13 +30,13 @@ class Stack {
     }
 }
 
-const starTrek = new Stack()
-const empty = new Stack()
+// const starTrek = new Stack()
+// const empty = new Stack()
 
-starTrek.push('Kirk')
-starTrek.push('Spock')
-starTrek.push('McCoy')
-starTrek.push('Scotty')
+// starTrek.push('Kirk')
+// starTrek.push('Spock')
+// starTrek.push('McCoy')
+// starTrek.push('Scotty')
 
 
 function peek(stack){
@@ -88,7 +88,7 @@ function isPalindrome(s){
     return true
 }
 
-isPalindrome('daad')
+// isPalindrome('daad')
 
 // console.log(peek(starTrek))
 // console.log(isEmpty(starTrek))
@@ -145,3 +145,115 @@ class Queue {
         return node.value
     }
 }
+
+
+function peek(q){
+    console.log(q.first.value)
+    return q.first.value
+}
+
+
+function isEmpty(q){
+    if(!q.first){
+        console.log('is empty')
+        return
+    }
+    console.log('not empty')
+    return
+}
+
+function display(q){
+    if(!q.first){
+        console.log('queue is empty')
+    }
+    while(q.first){
+        console.log(q.first.value)
+        q.first = q.first.next
+    }
+    return
+}
+
+const starTrekQ = new Queue() 
+const empty = new Queue()
+
+starTrekQ.enqueue('Kirk')
+starTrekQ.enqueue('Spock')
+starTrekQ.enqueue('McCoy')
+starTrekQ.enqueue('Scotty')
+
+// console.log(starTrekQ) //expect valud queue with all 4 values enqueued
+// peek(starTrekQ) //expect Kirk
+// isEmpty(starTrekQ) //expect 'not empty'
+// isEmpty(empty) //expect 'is empty'
+// display(starTrekQ) //expect log all names
+// display(empty) //expect 'queue is empty'
+
+
+
+//QUEUE WITH DOUBLY LINKED LIST
+class _NodeDQ {
+    constructor(value){
+        this.value = value;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+
+class DblQueue {
+    constructor() {
+        this.first = null;
+        this.last = null;
+    }
+
+    enqueue(value){
+        const node = new _NodeQ(value)
+
+        if(!this.first){
+            this.first = node
+        }
+        if(this.last){
+            this.last.next = node
+            this.prev = this.last
+        }
+        this.last = node
+    }
+
+    dequeue(){
+        if(!this.first){
+            return
+        }
+        const node = this.first
+        this.first = this.first.next
+        this.prev = null
+
+        if(node === this.last){
+            this.last = null
+        }
+        return node.value
+    }
+}
+
+
+function check(q){
+    if(q.first){
+        console.log('q.first.next.value: ')
+        console.log(q.first.next.value)
+    }
+    if(q.last){
+        console.log('q.prev.value: ')
+        console.log(q.prev.value)
+    }
+}
+
+
+const dblList = new DblQueue()
+
+dblList.enqueue('Hello')
+dblList.enqueue('from')
+dblList.enqueue('the')
+dblList.enqueue('DblQueue')
+dblList.enqueue('One more')
+
+// console.log(dblList)
+check(dblList)
