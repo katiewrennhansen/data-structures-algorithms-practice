@@ -1,17 +1,135 @@
+// class BinarySearchTree {
+//     constructor(key = null, value = null, parent = null) {
+//         this.key = key;
+//         this.value = value;
+//         this.parent = parent;
+//         this.left = null;
+//         this.right = null;
+//     }
+
+//     insert(key, value){
+//         if(!this.key){
+//             this.key = key
+//             this.value = value
+//         }
+//         else if (key < this.key){
+//             if(!this.left){
+//                 this.left = new BinarySearchTree(key, value, this)
+//             }
+//             else {
+//                 this.left.insert(key, value)
+//             }
+//         }
+//         else {
+//             if(!this.right){
+//                 this.right = new BinarySearchTree(key, value, this)
+//             }
+//             else {
+//                 this.right.insert(key, value)
+//             }
+//         }
+//     }
+
+//     find(key){
+//         if(this.key == key){
+//             return this.value
+//         }
+//         else if (key < this.key && this.left){
+//             return this.left.find(key)
+//         }
+//         else if (key > this.key && this.right){
+//             return this.right.find(key)
+//         }
+//         else {
+//             throw new Error ('key error')
+//         }
+//     }
+
+//     remove(key){
+//         if(this.key == key){
+//             if(this.left && this.right){
+//                 const successor = this.right._findMin();
+//                 this.key = this.successor.key
+//                 this.value = this.successor.value
+//                 successor.remove(successor.key)
+//             }
+//             else if(this.left){
+//                 this._replaceWith(this.left)
+//             }
+//             else if(this.right){
+//                 this._replaceWith(this.right)
+//             }
+//             else {
+//                 this._replaceWith(null)
+//             }
+//         }
+//         else if (key < this.key && this.left){
+//             this.left.remove(key)
+//         }
+//         else if (key > this.key && this.right){
+//             this.right.remove(key)
+//         }
+//         else {
+//             throw new Error ('key error')
+//         }
+//     }
+
+//     _replaceWith(node){
+//         if (this.parent){
+//             if (this == this.parent.left){
+//                 this.parent.left = node
+//             }
+//             else if (this == this.parent.right){
+//                 this.parent.right = node
+//             }
+//             if (node){
+//                 node.parent = this.parent
+//             }
+//         }
+//         else {
+//             if(node){
+//                 this.key = node.key
+//                 this.value = node.value
+//                 this.left = node.left
+//                 this.right = node.right
+//             }
+//             else {
+//                 this.key = null
+//                 this.value = null
+//                 this.left = null
+//                 this.right = null
+//             }
+//         }
+//     }
+
+//     _findMin(){
+//         if(!this.left) {
+//             return this
+//         }
+//         return this.left._findMin()
+//     }
+
+// }
+
+
+
+
+
+
 class BinarySearchTree {
-    constructor(key = null, value = null, parent = null) {
-        this.key = key;
-        this.value = value;
-        this.parent = parent;
-        this.left = null;
-        this.right = null;
+    constructor(key = null, value = null, parent = null){
+        this.key = key
+        this.value = value
+        this.parent = parent
+        this.left = null
+        this.right = null
     }
 
     insert(key, value){
         if(!this.key){
             this.key = key
             this.value = value
-        }
+        } 
         else if (key < this.key){
             if(!this.left){
                 this.left = new BinarySearchTree(key, value, this)
@@ -19,7 +137,7 @@ class BinarySearchTree {
             else {
                 this.left.insert(key, value)
             }
-        }
+        } 
         else {
             if(!this.right){
                 this.right = new BinarySearchTree(key, value, this)
@@ -30,40 +148,42 @@ class BinarySearchTree {
         }
     }
 
+
     find(key){
         if(this.key == key){
             return this.value
         }
-        else if (key < this.key && this.left){
+        else if (key < this.key && this.left) { 
             return this.left.find(key)
-        }
-        else if (key > this.key && this.right){
+        } 
+        else if (key > this.key && this.right) {
             return this.right.find(key)
         }
         else {
-            throw new Error ('key error')
+            throw new Error ('couldnt find key')
         }
     }
+
 
     remove(key){
         if(this.key == key){
             if(this.left && this.right){
-                const successor = this.right._findMin();
+                const successor = this.right._findMin()
                 this.key = this.successor.key
                 this.value = this.successor.value
                 successor.remove(successor.key)
             }
-            else if(this.left){
+            else if (this.left){
                 this._replaceWith(this.left)
             }
-            else if(this.right){
+            else if (this.right) {
                 this._replaceWith(this.right)
             }
             else {
                 this._replaceWith(null)
             }
         }
-        else if (key < this.key && this.left){
+        else if (key < this.key && this.left) {
             this.left.remove(key)
         }
         else if (key > this.key && this.right){
@@ -75,14 +195,14 @@ class BinarySearchTree {
     }
 
     _replaceWith(node){
-        if (this.parent){
-            if (this == this.parent.left){
+        if(this.parent){
+            if(this == this.parent.left){
                 this.parent.left = node
             }
             else if (this == this.parent.right){
                 this.parent.right = node
             }
-            if (node){
+            if(node){
                 node.parent = this.parent
             }
         }
@@ -92,7 +212,7 @@ class BinarySearchTree {
                 this.value = node.value
                 this.left = node.left
                 this.right = node.right
-            }
+            } 
             else {
                 this.key = null
                 this.value = null
@@ -103,10 +223,38 @@ class BinarySearchTree {
     }
 
     _findMin(){
-        if(!this.left) {
+        if(!this.left){
             return this
+        }  
+        else {
+           return this.left._findMin()
         }
-        return this.left._findMin()
     }
 
+    _getHeight(node){ //Big O(log n) because each time you essentiall divide the problem in half
+        if(!node) {
+            return -1
+        } 
+        let left = this._getHeight(node.left) 
+        let right = this._getHeight(node.right) 
+        
+        return Math.max(left, right) + 1
+    }
+  
 }
+
+const bst = new BinarySearchTree()
+
+bst.insert(10)
+bst.insert(6)
+bst.insert(7)
+bst.insert(8)
+bst.insert(2)
+bst.insert(32)
+bst.insert(7)
+bst.insert(3)
+
+console.log(bst)
+
+
+console.log(bst._getHeight(bst))
