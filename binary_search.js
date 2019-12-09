@@ -237,7 +237,8 @@ class BinarySearchTree {
         } 
         let left = this._getHeight(node.left) 
         let right = this._getHeight(node.right) 
-        
+        console.log(left)
+        console.log(right)
         return Math.max(left, right) + 1
     }
   
