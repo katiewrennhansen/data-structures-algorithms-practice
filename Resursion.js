@@ -84,7 +84,57 @@ function factorial(num){
 }
 
 
+
 //Find a way out of the maze
-function maze(){
-    
+function mazeSolver(maze) {
+    this.maze = maze;
+
+    this.traverse = function(column, row){
+        if(this.maze[column][row] === 'e') {
+            console.log(this.maze)
+        }
+        else if(this.maze[column][row] === ' ') {
+            this.maze[column][row] = '+'; 
+            if(column < this.maze.length - 1) {
+                if(this.maze[column][row] !== '*'){
+                }
+                this.traverse(column + 1, row);
+            } 
+            if(row < this.maze[column].length - 1){
+                this.traverse(column, row + 1);
+            } 
+            if(column > 0){
+                this.traverse(column - 1, row);
+            } 
+            if (row > 0) {
+                this.traverse(column, row - 1);
+            }
+        } 
+    };
 }
+
+
+let bigMaze = [
+    [' ', ' ', ' ', '*', ' ', ' ', ' '],
+    ['*', '*', ' ', '*', ' ', '*', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', '*', '*', '*', '*', '*', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+];
+
+let mySmallMaze = [
+    [' ', ' ', ' '],
+    [' ', '*', ' '],
+    [' ', ' ', 'e']
+];
+
+
+// const maze = new mazeSolver(mySmallMaze)
+
+// maze.traverse(0, 0)
+
+const maze2 = new mazeSolver(bigMaze)
+
+maze2.traverse(0, 0)
+
+
