@@ -138,3 +138,13 @@ const maze2 = new mazeSolver(bigMaze)
 maze2.traverse(0, 0)
 
 
+
+
+
+//Anagram
+function anagram(){
+    
+}
+
+
+

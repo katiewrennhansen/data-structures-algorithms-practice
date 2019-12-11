@@ -217,6 +217,7 @@ linkedList.insertFirst('Last')
 linkedList.insertFirst('Husker')
 linkedList.insertFirst('Starbuck')
 linkedList.insertFirst('Tauhida')
+linkedList.insertFirst('Husker')
 
 // display(linkedList)
 // size(linkedList)
@@ -225,5 +226,68 @@ linkedList.insertFirst('Tauhida')
 // findLast(linkedList)
 // findPrevious(linkedList, 'Husker')
 
-const newLinkedList = reverseList(linkedList)
-displayHead(newLinkedList)
+// const newLinkedList = reverseList(linkedList)
+// displayHead(newLinkedList)
+
+
+
+
+function deleteDuplicates(list){
+    let count = {}
+    let current = list.head
+    let prev = list.head
+    const newList = new LinkedList()
+    
+    while (current) {
+        if(!count[current.value]){
+            newList.insertLast(current.value)
+            // console.log(current.value)
+            count[current.value] = 1
+            current = current.next
+            prev = current
+        }
+        else {
+            newList.remove(current.value)
+            prev.next = current.next
+            current = current.next
+        } 
+    }
+    display(newList)
+}
+
+// deleteDuplicates(linkedList)
+
+
+
+
+
+function compareLL(list1, list2){
+    let curr1 = list1.head 
+    let curr2 = list2.head
+    let count1 = 0
+    let count2 = 0
+    while(curr1){
+        count1++
+        curr1 = curr1.next
+    }
+    while(curr2){
+        count2++
+        curr2 = curr2.next
+    }
+
+    if(count1 === count2){
+        return 0
+    } else if (count1 > count2){
+        return 1
+    } else {
+        return -1
+    }
+}
+
+
+const linkedList2 = new LinkedList()
+linkedList2.insertFirst('Starbuck')
+linkedList2.insertFirst('Tauhida')
+linkedList2.insertFirst('Husker')
+
+console.log(compareLL(linkedList, linkedList2))
